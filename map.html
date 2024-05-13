@@ -1,0 +1,279 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> 10 สวนสุขภาพ</title>
+<!-- link css leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+crossorigin=""/>
+<!-- link js leaflet -->
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script>
+<style>
+body {
+        background-color: aliceblue;
+        padding: 0;
+        margin: 0;
+    }
+    
+    html,
+    body,
+    #map {
+        height: 100%;
+        width: 100%;
+    }
+    .menu-bar {
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* สไตล์ของลิสต์เมนู */
+.menu-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-bar ul li {
+  float: left;
+}
+
+.menu-bar ul li a {
+  display: block;
+  color: rgb(2, 2, 2);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* เพิ่มสีพื้นหลังเมื่อเม้าส์ hover ที่เมนู */
+.menu-bar ul li a:hover {
+  background-color: #555;
+}
+
+/* ขนาดไอคอน */
+.menu-bar ul li a i {
+  font-size: 20px;
+}
+    /* เพิ่มการตกแต่งส่วนต่างๆของเว็บไซต์ของคุณตรงนี้ */
+
+    h1{
+    color: #F9F7F7;
+    font-size: 50px;
+}
+h2{
+    font-size: 40px;
+    color: #112D4E;
+}
+h3{
+    font-size: large;
+    color: #112D4E;
+}
+h4{
+    font-size: large;
+}
+h5{
+    font-size: 30px;
+    color: #ffffff;
+}
+hr{
+    border-style: none;
+    border-top-style: dotted;
+    border-color: black;
+    border-width: 5px;
+    width: 5%;
+    }
+body{
+    background-color: #F9F7F7;
+}
+/* ใส่boxให้ตัวเว็บ *คือทำทั้งเอกสาร */
+*{
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #0C2D57;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: #000000;
+}
+/* จัดข้อมูลในขอบข้างๆ */
+article{
+    padding: 20px;
+    width: 85%;
+    background-color: #F9F7F7;
+    height: 1500px;
+    /* จัดข้อความข้างล่าง */
+    text-align: left;
+    color: #0C2D57;
+} 
+footer{
+    background-color: #0C2D57;
+    padding: 10px;
+    text-align: center;
+    color: #F9F7F7;
+}
+/* responedsive layout : คงขนาดไว้เวลาเปิดในมือถือ */
+@media(max-width: 600px){
+    nav,article{
+        width: 100%;
+        height: auto;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <center>
+            <h1>สวนสุขภาพ</h1>
+            <img src="https://cdn-icons-png.flaticon.com/128/532/532988.png" style="width: 120px; height: 120px;" alt="logo">
+        </center>
+    </header>
+    <div class="menu-bar">
+        <ul>
+            <li> <a href="index.html"><img src="https://cdn-icons-png.flaticon.com/128/3917/3917033.png" style="width: 24px; height: 20px;" alt="Home Icon"> หน้าแรก</a></li>
+          <li><a href="index2.html"><img src="https://cdn-icons-png.flaticon.com/128/9238/9238289.png" style="width: 24px; height: 20px;" alt="park Icon">สวนสุขภาพ 10 แห่งในกรุงเทพ</a></li>
+          <li><a href="map.html"><img src="https://cdn-icons-png.flaticon.com/128/5073/5073819.png" style="width: 22px; height: 19px;" alt="map Icon"> สวนสุขภาพกรุงเทพ</a></li>
+          <li><a href="index4.html"><img src="https://cdn-icons-png.flaticon.com/128/3914/3914794.png" style="width: 24px; height: 20px;" alt="invised Icon">คำแนะนำ</a></li>
+        </ul>
+      </div>
+    <center><b><h2>แผนที่สวนสุขภาพในกรุงเทพมหานคร</h2></b></center>
+<!-- แบ่งส่วนหน้าจอ -->
+<div id="map" style="width: 100%; height: 100%"></div>
+<script>
+//set view map
+var map = L.map('map').setView([13.7563, 100.5018], 12);
+
+//import based map
+var OSM = L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
+maxZoom: 18,
+attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors'
+}).addTo(map);
+
+var OpenStreetMap_DE = L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
+ maxZoom: 18,
+ attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
+
+var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+ maxZoom: 20,
+ attribution: '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+var Topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+	maxZoom: 17,
+	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+}).addTo(map);
+
+var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+ maxZoom: 19,
+ attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
+}).addTo(map);
+
+var baseLayers = {
+"OSM" : OSM,
+"OpenStreetMap_DE": OpenStreetMap_DE,
+"OpenStreetMap": OpenStreetMap,
+"Topo": Topo,
+"OpenStreetMap_HOT": OpenStreetMap_HOT,
+} 
+L.control.layers(baseLayers).addTo(map);
+
+//การเพิ่มข้อข้อมูลลงบนแผนที่
+var point = L.marker([13.7563, 100.5018],
+{
+draggable: true, // Make the icon dragable
+title: 'park', // Add a title
+opacity: 1.5 // Adjust the opacity
+} 
+).addTo(map);
+
+
+//และข้อมูลลงในแผนที่
+point.bindPopup("<b>สวนสาธารณะ</b><br>")
+.openPopup(); 
+
+
+//แสดงข้อมูลหลายจุด
+var swu = [
+["สวนหลวงร.9",13.67968874, 100.6613534],
+["สวนวชิรเบญจทัศ (สวนรถไฟ)", 13.81316915, 100.5567365],
+["สวนลุมพินี", 13.73162611, 100.5417199],
+["สวนสมเด็จพระนางเจ้าสิริกิติ์ฯ", 13.80768901, 100.5505148],
+["สวนเสรีไทย", 13.78732514, 100.6743704],
+["สวนธนบุรีรมย์", 13.65205063, 100.4914116],
+["สวนเบญจกิติ", 13.72959217, 100.5587321],
+["สวนรมณีนาถ", 13.74889709, 100.5025993],
+["สวนสันติภาพ", 13.76285459, 100.54139],
+["สวนหลวงพระราม 8", 13.76932286, 100.4949805],
+["สวนวารีภิรมย์", 13.848540049987648, 100.77569364713115],
+["สวนนวมินทร์ภิรมย์ (บึงลำพังพวย)", 13.784410372721027, 100.6480347262022],
+["สวน 60 พรรษา สมเด็จพระบรมราชินีนาถ", 13.763204041843414, 100.73226681015824],
+["สวนกีฬารามอินทรา", 13.878246749598746, 100.62039875795304],
+["สวนทวีวนารมย์", 13.744263662618744, 100.35235571738846],
+["สวนลาดกระบัง (สวนพระนคร)", 13.721143472464947, 100.78119117331744],
+["สวนวนธรรม (สวนธรรม 70 พรรษา มหาราชินี)", 13.684063633059752, 100.6554799734283],
+["สวนปทุมวนานุรักษ์", 13.74896940946674, 100.54015100258671],
+["สวนหนองจอก", 13.8546882746896, 100.85894894467069],
+["สวนวัชราภิรมย์", 13.852222641956066, 100.6397469171623],
+["อุทยานเบญจสิริ", 13.73165712906734, 100.56789781585421],
+["สวนสาธารณะเฉลิมพระเกียรติ 6 รอบ พระชนมพรรษา", 13.685797122541363, 100.51810755972757],
+["อุทยานเฉลิมพระเกียรติพระบาทสมเด็จพระมหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร", 13.763646807583418, 100.51778041813265],
+["สวนสราญรมย์", 13.74832037841689, 100.49558334876144],
+];
+
+//เปลี่ยน icon
+var greenIcon = L.icon({
+iconUrl: 'https://cdn-icons-png.flaticon.com/128/684/684908.png',
+iconSize: [50, 50], // size of the icon
+// shadowSize: [50, 64], // size of the shadow
+iconAnchor: [50, 50], // point of the icon which will correspond to marker's location
+// shadowAnchor: [4, 62], // the same for the shadow
+popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+for (var i = 0; i < swu.length; i++) {
+
+marker = new L.marker([swu[i][1], swu[i][2]], {icon: greenIcon})
+.bindPopup(swu[i][0])
+.addTo(map);
+}
+
+//description/Legend
+var legend = L.control({position: "bottomright"});
+legend.onAdd = function(map) {
+var div = L.DomUtil.create("div", "legend");
+div.innerHTML = 
+'<p><b>Srinakharinwirot university</b></p><hr>' +
+'Created by 021,195,278<br>' +
+'ID: 64103010021,64103010195,64103010278<br>'+
+'<img src="https://unity.swu.ac.th/wp-content/uploads/2020/07/SWU_Logo_EN_Color.png" width = 20%>';
+return div;
+};
+
+var legendd = L.control({position: "bottomleft"});
+legendd.onAdd = function(map) {
+var div = L.DomUtil.create("div", "legendd");
+div.innerHTML =
+'<b>คำอธิบายสัญลักษณ์</b><hr>' +
+'<p>สวนสุขภาพ</p>'+
+'<img src="https://cdn-icons-png.flaticon.com/128/684/684908.png" width = 30%>'; 
+return div;
+};
+legend.addTo(map);
+legendd.addTo(map);
+
+</script>
+<footer>
+<h5><center>Presented By</center></h5>
+    <p><center>นางสาวอลีนา ศรีนวลน้อย รหัสนิสิต64103010021
+        <br>นางสาวพัทธวรรณ น้ำใส รหัสนิสิต64103010195
+        <br>นางสาวจิราภา พูนวศินมงคล รหัสนิสิต64103010278</center></p>
+        <h5><center>THANK YOU</center>
+    <hr>
+</footer>

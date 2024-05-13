@@ -1,0 +1,136 @@
+h1{
+    color: #f6f6f6;
+    font-size: 50px;
+}
+h2{
+    font-size: 40px;
+    color: #112D4E;
+}
+h3{
+    font-size: 30px;
+    color: #112D4E;
+}
+h4{
+    font-size: large;
+}
+h5{
+    font-size: 30px;
+    color: #ffffff;
+}
+hr{
+    border-style: none;
+    border-top-style: none;
+    border-color: black;
+    border-width: 5px;
+    width: 5%;
+    }
+body{
+    background-color: #F9F7F7;
+}
+/* ใส่boxให้ตัวเว็บ *คือทำทั้งเอกสาร */
+*{
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #0C2D57;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: #000000;
+}
+/* จัดข้อมูลในขอบข้างๆ */
+article{
+    height: 1810px;
+    /* จัดข้อความข้างล่าง */
+    text-align: left;
+    color: #0C2D57;
+    
+} 
+footer{
+    background-color: #0C2D57;
+    padding: 10px;
+    text-align: center;
+    color: #F9F7F7;
+}
+/* responedsive layout : คงขนาดไว้เวลาเปิดในมือถือ */
+@media(max-width: 600px){
+    nav,article{
+        width: 100%;
+        height: auto;
+    }
+}
+body{
+    font-family: 'Mitr', sans-serif;
+}
+.menu-bar {
+background-color: #ffffff;
+overflow: hidden;
+}
+
+/* สไตล์ของลิสต์เมนู */
+.menu-bar ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+.menu-bar ul li {
+float: left;
+}
+
+.menu-bar ul li a {
+display: block;
+color: rgb(2, 2, 2);
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+/* เพิ่มสีพื้นหลังเมื่อเม้าส์ hover ที่เมนู */
+.menu-bar ul li a:hover {
+background-color: #555;
+}
+
+/* ขนาดไอคอน */
+.menu-bar ul li a i {
+font-size: 20px;
+}
+.news-container {
+overflow: hidden;
+}
+
+.news-box {
+width: calc(33.33% - 20px); /* กำหนดความกว้างของกล่องข่าว */
+float: left;
+margin-right: 20px;
+margin-bottom: 20px;
+background-color: #f0f0f0;
+padding: 10px;
+border-radius: 5px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.news-box:last-child {
+margin-right: 0;
+}
+
+.news-box img {
+width: 100%;
+height: auto;
+border-radius: 5px;
+}
+
+.news-box h2 {
+font-size: 16px;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+.news-box p {
+font-size: 14px;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+  

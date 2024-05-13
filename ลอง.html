@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Bar with Icons</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- เรียกใช้งานไอคอนจาก Font Awesome -->
+<style>
+/* สไตล์ของเมนูบาร์ */
+.menu-bar {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* สไตล์ของลิสต์เมนู */
+.menu-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-bar ul li {
+  float: left;
+}
+
+.menu-bar ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* เพิ่มสีพื้นหลังเมื่อเม้าส์ hover ที่เมนู */
+.menu-bar ul li a:hover {
+  background-color: #555;
+}
+
+/* ขนาดไอคอน */
+.menu-bar ul li a i {
+  font-size: 20px;
+}
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.news-box {
+  flex: 1 0 calc(33.33% - 20px);
+    max-width: 200px; /* กำหนดความกว้างสูงสุด */
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.news-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.news-box h2 {
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.news-box p {
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.sidebar h2 {
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+    text-align: center;
+}
+
+.sidebar li a {
+    text-decoration: none;
+    color: #333;
+}
+#searchInput {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* คำนึงถึง padding และ border ในการคำนวณขนาด */
+}
+
+</style>
+</head>
+<body>
+  <input type="text" id="searchInput" placeholder="Search...">
+
+<!-- เมนูบาร์ -->
+<div class="menu-bar">
+  <ul>
+    <li><a href="#"><i class="fas fa-home"></i> หน้าแรก</a></li>
+    <li><a href="#"><i class="fas fa-search"></i> ค้นหา</a></li>
+    <li><a href="#"><i class="fas fa-envelope"></i> ข้อความ</a></li>
+    <li><a href="#"><i class="fas fa-bell"></i> การแจ้งเตือน</a></li>
+    <li><a href="#"><i class="fas fa-cog"></i> ตั้งค่า</a></li>
+  </ul>
+</div>
+<div class="news-box">
+    <img class="news-image" src="https://cdn-icons-png.flaticon.com/128/3917/3917033.png" alt="ข่าวสารที่น่าสนใจ" width="100" height="200">
+    <h2>ข่าวสารที่น่าสนใจ</h2>
+    <p>ข้อมูลเพิ่มเติมเกี่ยวกับข่าวสารที่น่าสนใจจะถูกนำเสนอที่นี่ หรือสามารถใส่ลิงก์ไปยังข่าวสารที่เกี่ยวข้องได้</p>
+  </div>
+  
+  <!-- กล่องข่าวที่สอง -->
+  <div class="news-box">
+    <img class="news-image" src="https://cdn-icons-png.flaticon.com/128/3917/3917033.png" alt="ข่าวล่าสุด">
+    <h2>ข่าวล่าสุด</h2>
+    <p>ข้อมูลเพิ่มเติมเกี่ยวกับข่าวล่าสุดจะถูกนำเสนอที่นี่ หรือสามารถใส่ลิงก์ไปยังข่าวที่เกี่ยวข้องได้</p>
+  </div>
+</body>
+</html>
